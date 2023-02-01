@@ -1,6 +1,6 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { ColumnChart } from "./components";
-import { FirstChartConfig } from "./utils";
+import { FirstChartConfig, series } from "./utils";
 
 const App = () => {
   return (
@@ -8,11 +8,18 @@ const App = () => {
       <Text fontSize="2.5rem" fontWeight="bold">
         Apexcharts Pill
       </Text>
-      <Flex w="100%" h="100%" mt="1rem">
-        <Flex w="50%">
-          <ColumnChart chartConfig={FirstChartConfig} />
+      <Flex w="100%" h="100%" mt="2.5rem">
+        <Flex w="50%" direction="column">
+          <Text fontSize="1.5rem" fontWeight="bold" textAlign="center">
+            Default Chart
+          </Text>
+          <ColumnChart chartConfig={FirstChartConfig} series={series} />
         </Flex>
-        <Flex w="50%">1</Flex>
+        <Flex w="50%" direction="column">
+          <Text fontSize="1.5rem" fontWeight="bold" textAlign="center">
+            Custom Chart
+          </Text>
+        </Flex>
       </Flex>
     </Flex>
   );
