@@ -1,6 +1,6 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { ColumnChart } from "./components";
-import { FirstChartConfig, series } from "./utils";
+import { customChartConfig, defaultChartConfig, series } from "./utils";
 
 const App = () => {
   return (
@@ -13,12 +13,13 @@ const App = () => {
           <Text fontSize="1.5rem" fontWeight="bold" textAlign="center">
             Default Chart
           </Text>
-          <ColumnChart chartConfig={FirstChartConfig} series={series} />
+          <ColumnChart chartConfig={defaultChartConfig} series={series} />
         </Flex>
         <Flex w="50%" direction="column">
           <Text fontSize="1.5rem" fontWeight="bold" textAlign="center">
             Custom Chart
           </Text>
+          <ColumnChart chartConfig={customChartConfig} series={series} />
         </Flex>
       </Flex>
     </Flex>

@@ -1,1 +1,2 @@
-export * from "./FirstChartConfig";
+export * from "./defaultChartConfig";
+export * from "./customChartConfig";

@@ -1,4 +1,4 @@
-export const FirstChartConfig: ApexCharts.ApexOptions = {
+export const defaultChartConfig: ApexCharts.ApexOptions = {
   xaxis: {
     categories: [
       "Jan",
