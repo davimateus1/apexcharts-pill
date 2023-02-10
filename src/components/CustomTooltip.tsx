@@ -1,5 +1,4 @@
 import { Box, Text } from "@chakra-ui/react";
-import "../styles/customTooltip.css";
 import * as ReactDOMServer from "react-dom/server";
 
 export const customTooltip = (data: any): string => {
