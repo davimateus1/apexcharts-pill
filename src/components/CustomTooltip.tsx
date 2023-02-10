@@ -1,4 +1,6 @@
+import { Box, Text } from "@chakra-ui/react";
 import "../styles/customTooltip.css";
+import * as ReactDOMServer from "react-dom/server";
 
 export const customTooltip = (data: any): string => {
   const { w, dataPointIndex } = data;
@@ -13,23 +15,52 @@ export const customTooltip = (data: any): string => {
     };
   });
 
-  return `
-    <div class="tooltip-container">
-      <div style="font-size: 1.5rem; font-weight: bold; margin-bottom: 10px;"> 
-       Month: ${currentLabel}
-      </div>
-      ${infosDataPoint
-        .map((item: any) => {
-          return `
-            <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 5px;">
-              ${item.name}
-            </div>
-            <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 5px;">
-              ${item.value}
-            </div>
-          `;
-        })
-        .join("")}
-    </div>
-  `;
+  const tooltip = (
+    <Box
+      style={{
+        background: "white",
+        padding: "10px",
+        borderRadius: "5px",
+        boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",
+      }}
+    >
+      <Text
+        style={{
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+          marginBottom: "10px",
+        }}
+      >
+        Month: {currentLabel}
+      </Text>
+      {infosDataPoint.map((item: any) => {
+        return (
+          <Box>
+            <Text
+              style={{
+                fontSize: "1.2rem",
+                fontWeight: "bold",
+                marginBottom: "5px",
+                textTransform: "capitalize",
+              }}
+            >
+              {item.name}
+            </Text>
+            <Text
+              style={{
+                fontSize: "1.2rem",
+                fontWeight: "bold",
+                marginBottom: "5px",
+                textTransform: "capitalize",
+              }}
+            >
+              {item.value}
+            </Text>
+          </Box>
+        );
+      })}
+    </Box>
+  );
+
+  return ReactDOMServer.renderToStaticMarkup(tooltip);
 };
