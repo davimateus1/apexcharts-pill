@@ -15,6 +15,14 @@ export const defaultChartConfig: ApexCharts.ApexOptions = {
       "Dec",
     ],
   },
+  chart: {
+    toolbar: {
+      show: false,
+    },
+  },
+  dataLabels: {
+    enabled: false,
+  },
 };
 
 export const series = [
@@ -23,7 +31,7 @@ export const series = [
     data: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120],
   },
   {
-    name: "purchasing",
+    name: "purchases",
     data: [15, 10, 10, 15, 45, 32, 26, 43, 65, 80, 90, 100],
   },
 ];

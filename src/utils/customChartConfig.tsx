@@ -1,4 +1,6 @@
 import { customTooltip } from "../components";
+import { customLegend } from "../components/CustomLegend";
+import { chartMonths, fictionalDataLegend } from "./fictionalDataLegend";
 
 export const customChartConfig: ApexCharts.ApexOptions = {
   colors: ["#F44336", "#2196F3"],
@@ -23,21 +25,19 @@ export const customChartConfig: ApexCharts.ApexOptions = {
     },
   },
   xaxis: {
-    categories: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ],
+    categories: chartMonths,
     tickPlacement: "on",
+  },
+  title: {
+    text: "Monthly Sales and Purchases",
+    align: "left",
+    margin: 0,
+    offsetX: 15,
+    style: {
+      fontSize: "12px",
+      fontWeight: "bold",
+      color: "#1E252B",
+    },
   },
   yaxis: {
     title: {
@@ -60,12 +60,33 @@ export const customChartConfig: ApexCharts.ApexOptions = {
     horizontalAlign: "left",
     offsetX: 0,
     markers: {
-      width: 15,
-      height: 15,
-      radius: 20,
+      width: 0,
+      height: 0,
     },
     itemMargin: {
       horizontal: 8,
     },
+    customLegendItems: fictionalDataLegend.map((item) => customLegend(item)),
   },
+  responsive: [
+    {
+      breakpoint: 1680,
+      options: {
+        plotOptions: {
+          bar: {
+            horizontal: true,
+          },
+        },
+        legend: {
+          position: "top",
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        chart: {
+          width: 600,
+        },
+      },
+    },
+  ],
 };

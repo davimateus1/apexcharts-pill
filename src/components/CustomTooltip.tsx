@@ -12,7 +12,6 @@ export const customTooltip = (data: any): string => {
     const currentSerieName = w.globals.seriesNames[index];
     const currentColor = w.globals.colors[index];
 
-    console.log(serie);
     return {
       name: currentSerieName,
       value: serie[dataPointIndex],
