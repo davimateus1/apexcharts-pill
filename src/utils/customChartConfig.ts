@@ -1,4 +1,7 @@
+import { customTooltip } from "../components";
+
 export const customChartConfig: ApexCharts.ApexOptions = {
+  colors: ["#F44336", "#2196F3"],
   chart: {
     toolbar: {
       tools: {
@@ -12,7 +15,6 @@ export const customChartConfig: ApexCharts.ApexOptions = {
           {
             icon: `<img src="https://img.icons8.com/ios/50/000000/expand.png" />`,
             click: (chart, options, e) => {
-              // Chart options /\
               alert("You clicked on custom icon");
             },
           },
@@ -44,12 +46,14 @@ export const customChartConfig: ApexCharts.ApexOptions = {
         fontSize: "15px",
         fontFamily: "Helvetica, Arial, sans-serif",
         fontWeight: 600,
+        color: "#263238",
       },
     },
   },
   tooltip: {
     shared: true,
     intersect: false,
+    custom: (data) => customTooltip(data),
   },
   legend: {
     position: "bottom",
@@ -58,7 +62,6 @@ export const customChartConfig: ApexCharts.ApexOptions = {
     markers: {
       width: 15,
       height: 15,
-      fillColors: [],
       radius: 20,
     },
     itemMargin: {
