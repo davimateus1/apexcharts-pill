@@ -10,7 +10,7 @@ export const ColumnChart = ({
   type = "bar",
 }: ColumnChartProps): JSX.Element => {
   return (
-    <Flex w="100%" h="100%">
+    <Flex w="100%" h="100%" justify="center">
       <ReactApexChart
         options={{ ...chartConfig }}
         series={series}
