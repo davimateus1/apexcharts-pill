@@ -7,7 +7,7 @@ import { months } from "../utils";
 export const customTooltip = (data: DataPoint): string => {
   const { w, dataPointIndex } = data;
 
-  const currentLabel = w.globals.categoryLabels[dataPointIndex].toString();
+  const currentLabel = w.globals.categoryLabels[dataPointIndex];
 
   const infosDataPoint: InfoDataPoint[] = w.globals.series.map(
     (serie: number[], index: number) => {
