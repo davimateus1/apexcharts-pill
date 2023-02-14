@@ -1,23 +1,26 @@
 import { Box, Divider, Text } from "@chakra-ui/react";
 import * as ReactDOMServer from "react-dom/server";
+import { DataPoint, InfoDataPoint } from "../types";
+
 import { months } from "../utils";
 
-export const customTooltip = (data: any): string => {
+export const customTooltip = (data: DataPoint): string => {
   const { w, dataPointIndex } = data;
 
-  const currentLabel: keyof typeof months =
-    w.globals.categoryLabels[dataPointIndex];
+  const currentLabel = w.globals.categoryLabels[dataPointIndex].toString();
 
-  const infosDataPoint = w.globals.series.map((serie: any, index: number) => {
-    const currentSerieName = w.globals.seriesNames[index];
-    const currentColor = w.globals.colors[index];
+  const infosDataPoint: InfoDataPoint[] = w.globals.series.map(
+    (serie: number[], index: number) => {
+      const currentSerieName = w.globals.seriesNames[index];
+      const currentColor = w.globals.colors[index];
 
-    return {
-      name: currentSerieName,
-      value: serie[dataPointIndex],
-      color: currentColor,
-    };
-  });
+      return {
+        name: currentSerieName,
+        value: serie[dataPointIndex],
+        color: currentColor,
+      };
+    }
+  );
 
   const tooltip = (
     <Box
@@ -36,9 +39,9 @@ export const customTooltip = (data: any): string => {
           color: "#93C4BB",
         }}
       >
-        {months[currentLabel]}
+        {months[currentLabel as keyof typeof months]}
       </Text>
-      {infosDataPoint.map((item: any, index: number) => {
+      {infosDataPoint.map((item: InfoDataPoint, index: number) => {
         return (
           <Box key={index}>
             <Text
